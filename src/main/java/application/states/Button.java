@@ -19,7 +19,7 @@ public class Button {
             while ((line = fileIn.readLine()) != null) {
                 for (String buttonPressed : line.split(" ")) {
                     if (Integer.parseInt(buttonPressed) > 3 || Integer.parseInt(buttonPressed) < 0) continue;
-                    buttonList.add(Integer.valueOf(buttonPressed));
+                    buttonList.add(Integer.parseInt(buttonPressed));
                 }
             }
         } catch (IOException e) {
