@@ -21,14 +21,14 @@ public class FloorTwo implements ElevatorState {
                 getElevator().decrementFloor(getElevator().getCurrentFloor());
                 getElevator().changeState(new FloorOne(getElevator()));
                 if (!getElevator().isMoving()) {
-                    System.out.print("Going down...");
+                    System.out.println("Going down...");
                     getElevator().setMoving(true);
                 }
             } else {
                 getElevator().incrementFloor(elevator.getCurrentFloor());
                 getElevator().changeState(new FloorThree(getElevator()));
                 if (!getElevator().isMoving()) {
-                    System.out.print("Going up...");
+                    System.out.println("Going up...");
                     getElevator().setMoving(true);
                 }
             }
@@ -45,12 +45,18 @@ public class FloorTwo implements ElevatorState {
 
     @Override
     public void closedDoorAction() {
-        System.out.println("Doors are closed");
+        if (!getElevator().isClosed()) {
+            getElevator().setClosed(true);
+            System.out.println("Doors are closed");
+        }
     }
 
     @Override
     public void openDoorAction() {
-        System.out.println("Doors are open");
+        if (getElevator().isClosed()) {
+            getElevator().setClosed(false);
+            System.out.println("Doors are open");
+        }
     }
 
     @Override
