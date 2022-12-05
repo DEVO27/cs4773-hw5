@@ -20,6 +20,7 @@ public class FloorThree implements ElevatorState {
             System.out.println("Going down...");
             getElevator().decrementFloor(getElevator().getCurrentFloor());
             getElevator().changeState(new FloorTwo(getElevator()));
+            getElevator().setMoving(true);
             getElevator().moveToFloor();
         }
     }
@@ -43,6 +44,7 @@ public class FloorThree implements ElevatorState {
     @Override
     public void arriveAction() {
         System.out.println("*ding* The elevator arrives at Floor " + getElevator().getCurrentFloor());
+        getElevator().setMoving(false);
         openDoorAction();
     }
 

@@ -9,6 +9,7 @@ public class Elevator {
     private ElevatorState state;
     private int currentFloor = 1;
     private int buttonPushed;
+    private boolean isMoving = false;
 
     /*** Initial State of the Elevator ***/
     public Elevator() {
@@ -78,5 +79,13 @@ public class Elevator {
 
     public void setButtonPushed(int buttonPushed) {
         this.buttonPushed = buttonPushed;
+    }
+
+    public boolean isMoving() {
+        return isMoving;
+    }
+
+    public void setMoving(boolean moving) {
+        isMoving = moving;
     }
 }
