@@ -12,7 +12,7 @@ public class FloorThree implements ElevatorState {
 
     @Override
     public void moveToFloor() {
-        System.out.println("Going Down");
+        System.out.println("Going down...");
         if (getElevator().getButtonPushed() == 2) {
             getElevator().changeState(new FloorTwo(getElevator()));
         } else {

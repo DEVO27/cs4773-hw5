@@ -16,7 +16,7 @@ public class FloorTwo implements ElevatorState {
             System.out.println("Going up...");
             getElevator().changeState(new FloorThree(getElevator()));
         } else {
-            System.out.println("Going down..");
+            System.out.println("Going down...");
             getElevator().changeState(new FloorOne(getElevator()));
         }
 
