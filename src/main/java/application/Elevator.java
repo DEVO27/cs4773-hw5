@@ -2,8 +2,6 @@ package application;
 
 import application.states.IStates.ElevatorState;
 import application.states.ImplStates.FloorOne;
-import application.states.ImplStates.FloorThree;
-import application.states.ImplStates.FloorTwo;
 
 import java.util.Objects;
 
@@ -37,14 +35,6 @@ public class Elevator {
 
     public void moveToFloor() {
         state.moveToFloor();
-    }
-
-    public void decrementFloor(int floor) {
-        setCurrentFloor((floor - 1) > 0 ? --floor : floor);
-    }
-
-    public void incrementFloor(int floor) {
-        setCurrentFloor((floor + 1) < 4 ? ++floor : floor);
     }
 
     public void changeState(ElevatorState elevatorState) {
