@@ -3,8 +3,6 @@ package application.states.ImplStates;
 import application.Elevator;
 import application.states.IStates.ElevatorState;
 
-import java.util.Objects;
-
 public class FloorTwo implements ElevatorState {
     private final Elevator elevator;
 
@@ -14,12 +12,12 @@ public class FloorTwo implements ElevatorState {
 
     @Override
     public void moveToFloor() {
-        if(getElevator().getButtonPushed() > getElevator().getCurrentFloor()) {
+        if (getElevator().getButtonPushed() > getElevator().getCurrentFloor()) {
             System.out.println("Going up...");
-            getElevator().changeState(new FloorOne(getElevator()));
+            getElevator().changeState(new FloorThree(getElevator()));
         } else {
             System.out.println("Going down..");
-            getElevator().changeState(new FloorThree(getElevator()));
+            getElevator().changeState(new FloorOne(getElevator()));
         }
 
         getElevator().setCurrentFloor(getElevator().getButtonPushed());
