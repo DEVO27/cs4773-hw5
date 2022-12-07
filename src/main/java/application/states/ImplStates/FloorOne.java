@@ -13,7 +13,7 @@ public class FloorOne implements ElevatorState {
     @Override
     public void moveToFloor() {
         //Change State Of Elevator
-        System.out.print("Going up...");
+        System.out.println("Going up...");
         if (getElevator().getButtonPushed() == 2) {
             getElevator().changeState(new FloorTwo(getElevator()));
         } else {
