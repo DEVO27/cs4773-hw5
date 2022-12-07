@@ -2,9 +2,7 @@ package application;
 
 import application.states.Button;
 
-/**
- * Hello world!
- */
+//Starting point of application
 public class App {
     public static void main(String[] args) {
         Elevator elevator = new Elevator();  //Current state is stateOne (FloorOne)

@@ -13,6 +13,7 @@ public class Button {
         this.buttonList = new ArrayList<>();
     }
 
+    //Reads and populates array of buttons pushed
     public List<Integer> getButtons(String fileName) {
         try (BufferedReader fileIn = new BufferedReader(new FileReader(fileName))) {
             String line;

@@ -12,7 +12,7 @@ public class Elevator {
     private boolean isMoving = false;
     private boolean isClosed = false;
 
-    /*** Initial State of the Elevator ***/
+    //Initial State of the Elevator
     public Elevator() {
         this.state = new FloorOne(this);
     }
