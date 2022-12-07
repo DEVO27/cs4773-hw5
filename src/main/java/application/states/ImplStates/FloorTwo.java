@@ -14,27 +14,16 @@ public class FloorTwo implements ElevatorState {
 
     @Override
     public void moveToFloor() {
-        if (Objects.equals(getElevator().getCurrentFloor(), getElevator().getButtonPushed())) {
-            arriveAction();
+        if (getElevator().getButtonPushed() > elevator.getCurrentFloor()) {
+            System.out.println("Going up...");
+            getElevator().changeState(new FloorThree(getElevator()));
         } else {
-            if (getElevator().getCurrentFloor() > getElevator().getButtonPushed()) {
-                getElevator().decrementFloor(getElevator().getCurrentFloor());
-                getElevator().changeState(new FloorOne(getElevator()));
-                if (!getElevator().isMoving()) {
-                    System.out.print("Going down...");
-                    getElevator().setMoving(true);
-                }
-            } else {
-                getElevator().incrementFloor(elevator.getCurrentFloor());
-                getElevator().changeState(new FloorThree(getElevator()));
-                if (!getElevator().isMoving()) {
-                    System.out.print("Going up...");
-                    getElevator().setMoving(true);
-                }
-            }
-
-            getElevator().moveToFloor();
+            System.out.println("Going down...");
+            getElevator().changeState(new FloorOne(getElevator()));
         }
+
+        getElevator().setCurrentFloor(getElevator().getButtonPushed());
+        getElevator().arrived();
     }
 
     @Override
