@@ -32,12 +32,18 @@ public class FloorOne implements ElevatorState {
 
     @Override
     public void closedDoorAction() {
-        System.out.println("Doors are closed");
+        if (!getElevator().isClosed()) {
+            getElevator().setClosed(true);
+            System.out.println("Doors are closed");
+        }
     }
 
     @Override
     public void openDoorAction() {
-        System.out.println("Doors are open");
+        if (getElevator().isClosed()) {
+            getElevator().setClosed(false);
+            System.out.println("Doors are open");
+        }
     }
 
     @Override

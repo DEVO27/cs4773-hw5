@@ -12,6 +12,7 @@ public class Elevator {
     private int currentFloor = 1;
     private int buttonPushed;
     private boolean isMoving = false;
+    private boolean isClosed = false;
 
     /*** Initial State of the Elevator ***/
     public Elevator() {
@@ -89,5 +90,13 @@ public class Elevator {
 
     public void setMoving(boolean moving) {
         isMoving = moving;
+    }
+
+    public void setClosed(boolean closed) {
+        isClosed = closed;
+    }
+
+    public boolean isClosed() {
+        return isClosed;
     }
 }

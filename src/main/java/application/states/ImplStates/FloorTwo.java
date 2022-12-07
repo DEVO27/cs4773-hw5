@@ -14,16 +14,27 @@ public class FloorTwo implements ElevatorState {
 
     @Override
     public void moveToFloor() {
-        if (getElevator().getButtonPushed() > elevator.getCurrentFloor()) {
-            System.out.println("Going up...");
-            getElevator().changeState(new FloorThree(getElevator()));
+        if (Objects.equals(getElevator().getCurrentFloor(), getElevator().getButtonPushed())) {
+            arriveAction();
         } else {
-            System.out.println("Going down...");
-            getElevator().changeState(new FloorOne(getElevator()));
-        }
+            if (getElevator().getCurrentFloor() > getElevator().getButtonPushed()) {
+                getElevator().decrementFloor(getElevator().getCurrentFloor());
+                getElevator().changeState(new FloorOne(getElevator()));
+                if (!getElevator().isMoving()) {
+                    System.out.println("Going down...");
+                    getElevator().setMoving(true);
+                }
+            } else {
+                getElevator().incrementFloor(elevator.getCurrentFloor());
+                getElevator().changeState(new FloorThree(getElevator()));
+                if (!getElevator().isMoving()) {
+                    System.out.println("Going up...");
+                    getElevator().setMoving(true);
+                }
+            }
 
-        getElevator().setCurrentFloor(getElevator().getButtonPushed());
-        getElevator().arrived();
+            getElevator().moveToFloor();
+        }
     }
 
     @Override
@@ -34,12 +45,18 @@ public class FloorTwo implements ElevatorState {
 
     @Override
     public void closedDoorAction() {
-        System.out.println("Doors are closed");
+        if (!getElevator().isClosed()) {
+            getElevator().setClosed(true);
+            System.out.println("Doors are closed");
+        }
     }
 
     @Override
     public void openDoorAction() {
-        System.out.println("Doors are open");
+        if (getElevator().isClosed()) {
+            getElevator().setClosed(false);
+            System.out.println("Doors are open");
+        }
     }
 
     @Override
